@@ -33,6 +33,53 @@
    }
    ```
    
+   Manifest中注册以下第三方广告sdk需要的provider
+   ```
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path" />
+        </provider>
+
+       <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+   
+   ```
+   
+   
+   xml资源下新建添加file_Path.xml
+   
+   ```
+   <?xml version="1.0" encoding="utf-8"?>
+    <resources>
+    <paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--为了适配所有路径可以设置 path = "." -->
+    <external-path name="tt_external_root" path="." />
+    <external-path name="tt_external_download" path="Download" />
+    <external-files-path name="tt_external_files_download" path="Download" />
+    <files-path name="tt_internal_file_download" path="Download" />
+    <cache-path name="tt_internal_cache_download" path="Download" />
+    </paths>
+    </resources>
+   
+   ```
+   
     
 
 ### 方法调用
